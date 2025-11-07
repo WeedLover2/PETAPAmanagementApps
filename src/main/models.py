@@ -11,8 +11,10 @@ class IoTDevice(models.Model):
 
     @property
     def is_online(self):
+        if self.last_active is None:
+            return False
         threshold = timezone.now() - timedelta(minutes=5)
-        return self.last_active >= threshold 
+        return self.last_active >= threshold
     
     @property
     def status(self):

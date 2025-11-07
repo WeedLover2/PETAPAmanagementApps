@@ -8,6 +8,13 @@ from .serializers import IoTDeviceSerializer, SensorDataSerializer
 from django.utils import timezone
 # Create your views here.
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def iot_data_get(request):
+    devices = IoTDevice.objects.all()
+    serializer = IoTDeviceSerializer(devices, many=True)
+    return Response(serializer.data)
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def iot_data_post(request):

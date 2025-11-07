@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/iot-data/', views.iot_data_post),
     path('api/summary/', views.summary),
+    path('api/iot-data-get/', views.iot_data_get),
 ]
